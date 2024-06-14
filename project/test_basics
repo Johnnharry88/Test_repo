@@ -1,0 +1,18 @@
+#!/usr/bin/python3
+from equi_model.user import User
+from equi_model import storage
+
+dict_x = storage.all()
+print('---------------Reloading-------------')
+for d in dict_x.keys():
+    obj = dict_x[d]
+    print(obj)
+print('--------------Creating New Object ---------')
+alx = User()
+alx.last_name = 'John'
+alx.first_nmae = 'Smith'
+alx.age = 20
+print('-------------Showing Created models----------')
+print(alx)
+print('----------Saving Action-------------')
+alx.save()
