@@ -9,7 +9,7 @@ from sqlalchemy.ext.declarative import declarative_base
 from os import getenv
 import json
 
-datastore = getenv('EQUIMED_TYPE_STORAGE')
+datastore = getenv('DATASTORE')
 Base = declarative_base()
 
 
@@ -17,7 +17,7 @@ class BaseModel:
     """Class that defines common attributes
     and method for class inheritance
     """
-    if datastore =="db":
+    if datastore == "sql":
         id = Column(String(60), primary_key=True)
         created_at = Column(Date, nullable=False, default=datetime.utcnow())
         updated_at = Column(Date, nullable=False, default=datetime.utcnow())
@@ -55,7 +55,7 @@ class BaseModel:
         """updates changes using the current date and time
         and saves it to Json file"""
         self.updated_at = datetime.now()
-        equi_model.storage.new()
+        equi_model.storage.new(self)
         equi_model.storage.save()
   
     def dict_pro(self):

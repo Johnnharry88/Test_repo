@@ -3,14 +3,14 @@
 from equi_model.base_model import BaseModel, Base
 from os import  getenv
 from sqlalchemy import Column, String, ForeignKey
+import sqlalchemy
 
-
-datastore = getenv('EQUIMED_TYPE_STORAGE')
+datastore = getenv('DATASTORE')
 
 
 class City(BaseModel, Base):
     """City Module"""
-    if datastore =="db":
+    if datastore == "sql":
         __tablename__ = "cities"
         state_id = Column(String(60), ForeignKey("states.id"), nullable=False)
         name = Column(String(120), nullable=False)

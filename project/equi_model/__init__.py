@@ -10,12 +10,12 @@ from equi_model.city import City
 #from equi_model.syringes import Syringe
 #from equi_model.forcepts import Forcept
 
-storage = getenv("EQUIMED_TYPE_STORAGE")
-if storage == "db":
-    from equi_model.engine.equi_sql import EquiSQLstore
-    storage = EquiSQLstore()
-else:
-    from equi_model.engine.store_json import Store_Json
-    storage = Store_Json()
+
+
+from equi_model.engine.equi_sql import EquiSQLstore
+storage = EquiSQLstore()
+
+#from equi_model.engine.store_json import Store_Json
+#storage = Store_Json()
 
 storage.reload()

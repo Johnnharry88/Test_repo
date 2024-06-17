@@ -4,13 +4,20 @@ from equi_model.base_model import BaseModel, Base
 from os import getenv
 from sqlalchemy import Column, Integer, ForeignKey, String
 
+datastore = getenv('DATASTORE')
+
 
 class Steth(BaseModel, Base):
     """ class stethoscope"""
-    __tablename__ = "stethoscopes"
-    order_id = Column(String(60), ForeignKey("orders.id"), nullable=False)
-    quantity = Column(Integer, nullable=True)
-    price = Column(String(60), nullable=True)
+    if datastore == "sql":
+        __tablename__ = "stethoscopes"
+        order_id = Column(String(60), ForeignKey("orders.id"), nullable=False)
+        quantity = Column(Integer, nullable=True)
+        price = Column(String(60), nullable=True)
+    else:
+        order_id = ""
+        quantity = ""
+        price = ""
 
     def __init__(self, *args, **kwargs):
         """Initializes the Steth"""

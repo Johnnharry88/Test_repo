@@ -5,17 +5,17 @@ from os import getenv
 from sqlalchemy.orm import sessionmaker, scoped_session
 from sqlalchemy import create_engine
 import equi_model
-#from equi_model.gause import Gause
-#from equi_model.forcepts import Forcept
-#from equi_model.steth import Steth
-#from equi_model.syringes import Syringe
+from equi_model.gause import Gause
+from equi_model.forcepts import Forcept
+from equi_model.steth import Steth
+from equi_model.syringes import Syringe
 from equi_model.order import Order
 from equi_model.city import City
 from equi_model.state import State
 from equi_model.user import User
-from equi_model.base_model import BaseModel
+from equi_model.base_model import BaseModel, Base
 
-classes = {'User': User, 'Order': Order, 'State': State, 'City': City}# 'Steth': Steth, 'Gause': Gause, 'Syringe': Syringe, 'Forcept': Forcept}
+classes = {'User': User, 'Order': Order, 'State': State, 'City': City, 'Steth': Steth, 'Gause': Gause, 'Syringe': Syringe, 'Forcept': Forcept}
 
 
 class EquiSQLstore:
@@ -25,10 +25,10 @@ class EquiSQLstore:
     search = None
 
     def __init__(self):
-        user = getenv('EQUIMED_MYSQL_USER')
-        password = getenv('EQUIMED_MYSQL_PWD')
-        database = getenv('EQUIMED_MYSQL_DB')
-        host = getenv('EQUIMED_MYSQL_HOST')
+        user = getenv('USER')
+        password = getenv('PASSWORD')
+        database = getenv('DATABASE')
+        host = getenv('HOST')
         env = getenv("EQUIMED_ENV")
 
         self.connect = create_engine('mysql+mysqldb://{}:{}@{}/{}'

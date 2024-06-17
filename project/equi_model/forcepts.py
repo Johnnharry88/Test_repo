@@ -5,13 +5,21 @@ from sqlalchemy import Column, String, Integer, ForeignKey
 from os import getenv
 #from equi_model.__init__ import storage
 
+datastore = getenv('DATASTORE')
+
 
 class Forcept(BaseModel, Base):
     """ class that defines forcepts"""
-    __tablename__ = "forcepts"
-    order_id = Column(String(60), ForeignKey("orders.id"), nullable=False)
-    quantity = Column(Integer, nullable=True)
-    price = Column(String(60), nullable=True)
+    if datastore == "sql":
+        __tablename__ = "forcepts"
+        order_id = Column(String(60), ForeignKey("orders.id"), nullable=False)
+        quantity = Column(Integer, nullable=True)
+        price = Column(String(60), nullable=True)
+
+    else:
+        order_id = ""
+        quantity = ""
+        price = ""
 
     def __init__(self, *args, **kwargs):
         """Initializes the Forcept"""

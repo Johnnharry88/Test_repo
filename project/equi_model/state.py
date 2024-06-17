@@ -3,12 +3,12 @@
 
 from equi_model.base_model import BaseModel, Base
 from equi_model.city import City
-from os import env
+from os import getenv
 #from equi_model.__init__ import storage
 from sqlalchemy import Column, String, ForeignKey
 from sqlalchemy.orm import relationship
 
-datastore = getenv('EQUIMED_TYPE_STORAGE')
+datastore = getenv('DATASTORE')
 
 
 class State(BaseModel, Base):
@@ -16,7 +16,7 @@ class State(BaseModel, Base):
     Attributes:
     name: State mane
     """
-    if datastore == "db":
+    if datastore == "sql":
         __tablename__ = "states"
         name = Column(String(128), nullable=False)
         cities = relationship("City", backref="state",

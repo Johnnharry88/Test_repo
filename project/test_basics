@@ -9,10 +9,17 @@ for d in dict_x.keys():
     print(obj)
 print('--------------Creating New Object ---------')
 alx = User()
-alx.last_name = 'John'
-alx.first_nmae = 'Smith'
-alx.age = 20
+alx.first_name = "John"
+alx.last_name ="Smith"
+alx.address = "No 6 Itiam Street"
+alx.email = "harryjohnwhye@gmail.com"
+alx.phone_no = "08033999309"
+alx.gender = "Male"
+alx.password = "root"
+alx.city = "Eket"
+alx.state = "Akwa-Ibom"
+alx.save()
 print('-------------Showing Created models----------')
 print(alx)
 print('----------Saving Action-------------')
-alx.save()
+
