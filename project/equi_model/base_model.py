@@ -10,7 +10,12 @@ from os import getenv
 import json
 
 datastore = getenv('DATASTORE')
-Base = declarative_base()
+
+if datastore == "sql":
+    Base = declarative_base()
+else:
+    class Base:
+        pass
 
 
 class BaseModel:
@@ -28,7 +33,11 @@ class BaseModel:
         """
         if len(kwarg) > 0:
             for k, v in kwarg.items():
-                if k != '__class__':
+                if k == "created_at":
+                    v = datetime.strptime(v, "%Y-%m-%dT%H:%M:%S.%f")
+                if k == "updated_at":
+                    v = datetime.strptime(v, "%Y-%m-%dT%H:%M:%S.%f")
+                if k != "__class__":
                     setattr(self, k, v)
                 if k ==  "created_at":
                     v = datetime.strptime(v, "%Y-%m-%dT%H:%M:%S.%f")
@@ -66,4 +75,6 @@ class BaseModel:
         dict_x['__class__'] = str(type(self).__name__)
         dict_x['created_at'] = self.created_at.isoformat()
         dict_x['updated_at'] = self.updated_at.isoformat()
+        if "-sa_instance_state" in dict_x.keys():
+            del dict_x["_sa_instance_state"]
         return dict_x

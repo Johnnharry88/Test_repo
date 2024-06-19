@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-from equi_model.user import User
+from equi_model.order import Order
 from equi_model import storage
 
 dict_x = storage.all()
@@ -8,18 +8,14 @@ for d in dict_x.keys():
     obj = dict_x[d]
     print(obj)
 print('--------------Creating New Object ---------')
-alx = User()
-alx.first_name = "John"
-alx.last_name ="Smith"
-alx.address = "No 6 Itiam Street"
-alx.email = "harryjohnwhye@gmail.com"
-alx.phone_no = "08033999309"
-alx.gender = "Male"
-alx.password = "root"
-alx.city = "Eket"
-alx.state = "Akwa-Ibom"
-alx.save()
+alx = Order()
+alx.user_id = "29301sdw210310"
+alx.city_id = "2930dksnckwcjwd"
+alx.del_phone = "080123894857"
+date = "12-34-2909"
+
 print('-------------Showing Created models----------')
 print(alx)
 print('----------Saving Action-------------')
+alx.save()
 
