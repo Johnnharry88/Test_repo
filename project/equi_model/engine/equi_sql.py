@@ -78,7 +78,7 @@ class EquiSQLstore:
 
     def close(self):
         """Calls remove"""
-        self.search.remove()
+        self.search.close()
 
     def get(self, cls, id):
         """Returns obj based on the class name and its ID"""

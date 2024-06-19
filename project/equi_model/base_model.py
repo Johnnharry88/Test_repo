@@ -30,20 +30,20 @@ class BaseModel:
             for k, v in kwarg.items():
                 if k != '__class__':
                     setattr(self, k, v)
-                if kwarg.get("created_at", None) and type(self.created_at) is str:
-                    self.created_at = datetime.strptime(kwarg["created_at"], time)
-                else:
-                    self.created_at = datetime.utcnow()
-                if kwarg.get("updated_at", None) and type(self.created_at) is str:
-                    self.updated_at = datetime.strptime(kwarg["updated-at"], time)
-                else:
-                    self.updated_at = datetime.utcnow()
-                if kwarg.get("id", None) is None:
-                    self.id = str(uuid.uuid4())
-            return
-        self.id = str(uuid.uuid4())
-        self.created_at = datetime.now()
-        self.updated_at = datetime.now()
+                if k ==  "created_at":
+                    v = datetime.strptime(v, "%Y-%m-%dT%H:%M:%S.%f")
+                if k == "updated_at":
+                    v = datetime.strptime(v, "%Y-%m-%dT%H:%M:%S.%f")
+            if "created_at" not in kwarg:
+                self.crreated_at = datetime.now()
+            if "updated_at" not in kwarg:
+                self.updated_at = datetime.now()
+            if "id" not in kwarg:
+                self.id = str(uuid.uuid4())
+        else:
+            self.id = str(uuid.uuid4())
+            self.created_at = datetime.now()
+            self.updated_at = datetime.now()
 
     def __str__(self):
         """String Representation of instance
