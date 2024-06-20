@@ -1,0 +1,8 @@
+#!/usr/bin/python3
+
+from equi_model.state import State
+
+alx = State()
+alx.name ="Imo"
+alx.save()
+print(alx)

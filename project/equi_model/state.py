@@ -4,7 +4,7 @@
 from equi_model.base_model import BaseModel, Base
 from equi_model.city import City
 from os import getenv
-from equi_model.import storage
+#from equi_model import storage
 from sqlalchemy import Column, String, ForeignKey
 from sqlalchemy.orm import relationship
 

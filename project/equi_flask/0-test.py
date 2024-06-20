@@ -1,18 +1,24 @@
 #!/usr/bin/python3
-"""Flask App module"""
 from flask import Flask, render_template
 from equi_model import storage
+from equi_model.state import State
+from equi_model.city import City
+from os import environ
 
 app = Flask(__name__)
 
 
-@app.route('/state', strict_slashes=False)
+@app.route("/state", strict_slashes=False)
 def state():
-    states = storage.all(State).values()
-    return render_template('0-states.html', states = states)
+    state = storage.all(State).values()
+    city = storage.all(City).values()
+       
+    return render_template('0-state.html', state_1=state,
+            city=city)
+
 
 @app.teardown_appcontext
-def teardoen(error):
+def teardown(error):
     storage.close()
 
 

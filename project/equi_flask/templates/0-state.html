@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title> Equi States</title>
+	</head>
+	<body>
+		<h3>States</h3>
+		<ul>
+	{% for x in state_1 |sort(attribute="name")%}
+			<li>{{ x.name}}</li>
+		{% endfor %}
+		{% for y in city|sort(attribute="name") %}
+			<li>{{y.name}}</li>
+		{% endfor %}
+		</ul>
+	</body>
+</html>

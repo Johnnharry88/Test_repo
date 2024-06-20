@@ -76,7 +76,7 @@ class Store_Json:
     def close(self):
         """Reloads self.equi_obj
         """
-        self.relaod()
+        self.reload()
 
     def get(self, cls, id):
         """ Returns the object based on class name and id"""

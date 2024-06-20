@@ -33,16 +33,12 @@ class BaseModel:
         """
         if len(kwarg) > 0:
             for k, v in kwarg.items():
-                if k == "created_at":
+                if k ==  "created_at":
                     v = datetime.strptime(v, "%Y-%m-%dT%H:%M:%S.%f")
                 if k == "updated_at":
                     v = datetime.strptime(v, "%Y-%m-%dT%H:%M:%S.%f")
                 if k != "__class__":
                     setattr(self, k, v)
-                if k ==  "created_at":
-                    v = datetime.strptime(v, "%Y-%m-%dT%H:%M:%S.%f")
-                if k == "updated_at":
-                    v = datetime.strptime(v, "%Y-%m-%dT%H:%M:%S.%f")
             if "created_at" not in kwarg:
                 self.crreated_at = datetime.now()
             if "updated_at" not in kwarg:
