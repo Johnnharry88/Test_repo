@@ -38,9 +38,9 @@ class User(BaseModel, Base):
        state = ""
        city = ""
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, *arg, **kwarg):
         """Initializes User"""
-        super().__init__(*args, **kwargs)
+        super().__init__(*arg, **kwarg)
 
 
     def __setattr__(self, name, value):

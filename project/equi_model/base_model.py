@@ -10,7 +10,12 @@ from os import getenv
 import json
 
 datastore = getenv('DATASTORE')
-Base = declarative_base()
+
+if datastore == "sql":
+    Base = declarative_base()
+else:
+    class Base:
+        pass
 
 
 class BaseModel:
@@ -28,22 +33,23 @@ class BaseModel:
         """
         if len(kwarg) > 0:
             for k, v in kwarg.items():
-                if k != '__class__':
+                if k == "created_at":
+                    v = datetime.strptime(v, "%Y-%m-%dT%H:%M:%S.%f")
+                if k == "updated_at":
+                    v = datetime.strptime(v, "%Y-%m-%dT%H:%M:%S.%f")
+                if k != "__class__":
                     setattr(self, k, v)
-                if kwarg.get("created_at", None) and type(self.created_at) is str:
-                    self.created_at = datetime.strptime(kwarg["created_at"], time)
-                else:
-                    self.created_at = datetime.utcnow()
-                if kwarg.get("updated_at", None) and type(self.created_at) is str:
-                    self.updated_at = datetime.strptime(kwarg["updated-at"], time)
-                else:
-                    self.updated_at = datetime.utcnow()
-                if kwarg.get("id", None) is None:
+            if "created_at" not in kwarg:
+                    self.created_at = datetime.now()
+            if "updated_at" not in kwarg:
+                    self.updated_at = datetime.now()
+            if "id" not in kwarg:
                     self.id = str(uuid.uuid4())
-            return
-        self.id = str(uuid.uuid4())
-        self.created_at = datetime.now()
-        self.updated_at = datetime.now()
+
+        else:
+            self.id = str(uuid.uuid4())
+            self.created_at = datetime.now()
+            self.updated_at = datetime.now()
 
     def __str__(self):
         """String Representation of instance
@@ -66,4 +72,6 @@ class BaseModel:
         dict_x['__class__'] = str(type(self).__name__)
         dict_x['created_at'] = self.created_at.isoformat()
         dict_x['updated_at'] = self.updated_at.isoformat()
+        if "-sa_instance_state" in dict_x.keys():
+            del dict_x["_sa_instance_state"]
         return dict_x

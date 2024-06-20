@@ -7,14 +7,15 @@ from equi_model.user import User
 from equi_model.state import State
 from equi_model.city import City
 from equi_model.order import Order
-#from equi_model.gause import Gause
-#from equi_model.steth import Steth
-#from equi_model.forcepts import Forcept
-#from equi_model.syringes import Syringe
+from equi_model.gause import Gause
+from equi_model.steth import Steth
+from equi_model.forcepts import Forcept
+from equi_model.syringes import Syringe
 import shlex
+from hashlib import md5
 
 
-classes = {'User': User, 'Order': Order, "State": State, "City": City} #"Steth": Steth, "Forcept": Forcept, "Gause": Gause, "Syringe": Syringe}
+classes = {'User': User, 'Order': Order, "State": State, "City": City, "Steth": Steth, "Forcept": Forcept, "Gause": Gause, "Syringe": Syringe}
 
 class Store_Json:
     """Saves instances to JSON file and 
