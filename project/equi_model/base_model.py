@@ -31,7 +31,7 @@ class BaseModel:
         """Constructor that instiantiates object
         using its attributes
         """
-        if len(kwarg) > 0:
+        if kwarg:
             for k, v in kwarg.items():
                 if k ==  "created_at":
                     v = datetime.strptime(v, "%Y-%m-%dT%H:%M:%S.%f")
@@ -39,16 +39,17 @@ class BaseModel:
                     v = datetime.strptime(v, "%Y-%m-%dT%H:%M:%S.%f")
                 if k != "__class__":
                     setattr(self, k, v)
+
+            if "id" not in kwarg:
+                self.id = str(uuid.uuid4())
             if "created_at" not in kwarg:
                 self.crreated_at = datetime.now()
             if "updated_at" not in kwarg:
                 self.updated_at = datetime.now()
-            if "id" not in kwarg:
-                self.id = str(uuid.uuid4())
-        else:
-            self.id = str(uuid.uuid4())
-            self.created_at = datetime.now()
-            self.updated_at = datetime.now()
+
+        self.id = str(uuid.uuid4())
+        self.created_at = datetime.now()
+        self.updated_at = datetime.now()
 
     def __str__(self):
         """String Representation of instance

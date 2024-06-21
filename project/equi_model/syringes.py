@@ -23,6 +23,6 @@ class Syringe(BaseModel, Base):
         quantity = ""
         price = ""
 
-    def __init__(self, *arg, **kwarg):
-        """Initializing the Syringe module"""
-        super().__init__(*arg, **kwarg)
+#    def __init__(self, *arg, **kwarg):
+#        """Initializing the Syringe module"""
+#        super().__init__(*arg, **kwarg)

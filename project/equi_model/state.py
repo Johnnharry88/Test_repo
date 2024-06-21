@@ -24,9 +24,9 @@ class State(BaseModel, Base):
     else:
         name = ""
 
-    def __init__(self, *arg, **kwarg):
-        """Initializes state"""
-        super().__init__(*arg, **kwarg)
+#    def __init__(self, *arg, **kwarg):
+#        """Initializes state"""
+#        super().__init__(*arg, **kwarg)
 
     if datastore != "sql":
         @property

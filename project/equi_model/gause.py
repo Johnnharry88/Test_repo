@@ -19,7 +19,7 @@ class Gause(BaseModel, Base):
         quantity = ""
         price = ""
 
-    def __init__(self, *arg, **kwarg):
-        """Initialize the Gause """
-        super().__init__(*arg, **kwarg)
+#    def __init__(self, *arg, **kwarg):
+#        """Initialize the Gause """
+#        super().__init__(*arg, **kwarg)
 

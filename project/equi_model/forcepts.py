@@ -21,6 +21,6 @@ class Forcept(BaseModel, Base):
         quantity = ""
         price = ""
 
-    def __init__(self, *arg, **kwarg):
-        """Initializes the Forcept"""
-        super().__init__(*arg, **kwarg)
+#    def __init__(self, *arg, **kwarg):
+#        """Initializes the Forcept"""
+#        super().__init__(*arg, **kwarg)

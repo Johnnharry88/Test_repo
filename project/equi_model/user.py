@@ -6,7 +6,6 @@ from sqlalchemy.orm import relationship
 from equi_model.order import Order
 from equi_model.state import State
 from equi_model.city import City
-from hashlib import md5
 
 datastore = getenv('DATASTORE')
 
@@ -43,8 +42,8 @@ class User(BaseModel, Base):
         super().__init__(*arg, **kwarg)
 
 
-    def __setattr__(self, name, value):
-        """Encrypts the password with nd5 encryption"""
-        if name == "password":
-            value = md5(value.encode()).hexdigest()
-        super().__setattr__(name, value)
+#    def __setattr__(self, name, value):
+#        """Encrypts the password with nd5 encryption"""
+#        if name == "password":
+#            value = md5(value.encode()).hexdigest()
+#        super().__setattr__(name, value)

@@ -12,10 +12,9 @@ from equi_model.steth import Steth
 from equi_model.forcepts import Forcept
 from equi_model.syringes import Syringe
 import shlex
-from hashlib import md5
 
 
-classes = {'User': User, 'Order': Order, "State": State, "City": City, "Steth": Steth, "Forcept": Forcept, "Gause": Gause, "Syringe": Syringe}
+classes = {'BaseModel': BaseModel, 'User': User, 'Order': Order, "State": State, "City": City, "Steth": Steth, "Forcept": Forcept, "Gause": Gause, "Syringe": Syringe}
 
 class Store_Json:
     """Saves instances to JSON file and 

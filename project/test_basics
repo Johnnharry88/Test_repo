@@ -1,21 +1,14 @@
 #!/usr/bin/python3
-from equi_model.order import Order
+from equi_model.user import User
 from equi_model import storage
 
-dict_x = storage.all()
-print('---------------Reloading-------------')
-for d in dict_x.keys():
-    obj = dict_x[d]
-    print(obj)
-print('--------------Creating New Object ---------')
-alx = Order()
-alx.user_id = "29301sdw210310"
-alx.city_id = "2930dksnckwcjwd"
-alx.del_phone = "080123894857"
-date = "12-34-2909"
-
-print('-------------Showing Created models----------')
-print(alx)
-print('----------Saving Action-------------')
-alx.save()
-
+user = User()
+user.first_name ="Harry"
+user.last_name = "Queen"
+user.address = "No 4 Itiam street"
+user.gender ="Male"
+user.email = "dazzlingdav@gmail.com"
+user.password = "root"
+user.state = "Akwa-Ibom"
+user.city ="Uyo"
+user.save()

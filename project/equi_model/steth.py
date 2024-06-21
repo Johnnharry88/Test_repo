@@ -19,6 +19,6 @@ class Steth(BaseModel, Base):
         quantity = ""
         price = ""
 
-    def __init__(self, *arg, **kwarg):
-        """Initializes the Steth"""
-        super().__init__(*arg, **kwarg)
+#    def __init__(self, *arg, **kwarg):
+#        """Initializes the Steth"""
+#        super().__init__(*arg, **kwarg)

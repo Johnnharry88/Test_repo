@@ -36,6 +36,6 @@ class Order(BaseModel, Base):
         del_phone = ""
         _date = ""
 
-    def __init__(self, *arg, **kwarg):
-        """initializes city"""
-        super().__init__(*arg, **kwarg)
+#    def __init__(self, *arg, **kwarg):
+#        """initializes city"""
+#        super().__init__(*arg, **kwarg)
