@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+export USER=johnharry
+export DATABASE=EquiMed
+export DATASTORE=sql
+export PASSWORD=johnharry
+export HOST=localhost
+
+echo ${HOST}
+echo ${USER}
+echo ${DATABASE}
+echo ${PASSWORD}
+echo ${DATASTORE}

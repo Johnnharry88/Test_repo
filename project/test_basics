@@ -11,4 +11,6 @@ user.email = "dazzlingdav@gmail.com"
 user.password = "root"
 user.state = "Akwa-Ibom"
 user.city ="Uyo"
+user.phone_no = "08033999309"
 user.save()
+print(user)

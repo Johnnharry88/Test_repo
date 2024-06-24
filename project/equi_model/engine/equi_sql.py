@@ -25,7 +25,7 @@ class EquiSQLstore:
     search = None
 
     def __init__(self):
-        user = getenv('USER')
+        user = getenv("USER")
         password = getenv('PASSWORD')
         database = getenv('DATABASE')
         host = getenv('HOST')
